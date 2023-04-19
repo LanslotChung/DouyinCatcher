@@ -1,0 +1,36 @@
+{
+	"manifest_version": 3,
+	"name": "抖音弹幕助手",
+	"version": "1.0.0",
+	"description": "抓取抖音直播间弹幕",
+	"icons": {
+		"16": "icon.png",
+		"48": "icon.png",
+		"128": "icon.png"
+	},
+	"content_scripts": [
+		{
+			"matches": [
+				"https://live.douyin.com/*"
+			],
+			"js": [
+				"js/reconnecting-websocket.min.js",
+				"js/google-protobuf.js",
+				"js/douyin_pb.js",
+				"js/pako.js",
+				"js/main.js"
+			],
+			"run_at": "document_start"
+		}
+	],
+	"web_accessible_resources": [ {
+		"matches": [ "https://live.douyin.com/*" ],
+		"resources": [ "js/hook.js" ]
+	 } ],
+	"permissions": [
+		"storage"
+	],
+	"action":{
+		"default_popup": "page/popup.html"
+	}
+}
